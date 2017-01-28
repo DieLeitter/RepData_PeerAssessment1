@@ -1,6 +1,8 @@
 ---
 title: "Reproducible Research Course Project 1, Number of Steps per Day"
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 ```{r} 
 library(knitr)
@@ -62,6 +64,9 @@ act$interval[which.max(steps_interval)]
 * Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 
+
+The missing data are imputed by using a mean for the 5-minute interval
+
 ```{r}
 sum(is.na(act$steps))
 
@@ -106,3 +111,4 @@ library(lattice)
 par(mfcol=c(5,1))
 xyplot(steps~interval | daycat, data = toplot, type = "l", layout= c(1,2))
 ```
+
