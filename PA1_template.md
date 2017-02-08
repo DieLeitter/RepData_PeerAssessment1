@@ -146,7 +146,7 @@ library(dplyr)
 
 ``` r
 act_noNA <- act
-nas <- is.na(act$steps) # indexes of NA in act#steps
+nas <- is.na(act$steps) # indices of NA in act$steps
 mean_interval <- tapply(act$steps, act$interval, mean, na.rm=TRUE)
 act_noNA$steps[nas] <- mean_interval[as.character(act$interval[nas])]
 sum(is.na(act_noNA$steps)) # Check if act_noNA have NA's
@@ -176,7 +176,7 @@ mean(steps_total_noNA)
 
     ## [1] 10766.19
 
-The median and mean for data frame with imputed valus is greated in compare to the results from data frame without imputed values. The reason is that by imputing values (in this particular case replacing NA with mean) we replace NA with positive values, and add them to the calculations.
+The median and mean for data frame with imputed valus is greated in compare to the results from data frame without imputed values. The reason is that by imputing values (in this particular case replacing NA with mean) we replace NA with positive values, and add them to the calculations. As a result days that previously have values of only zeros and NA's have average equal 0, when NA are not imputed, and avearage above 0 after NA imputing.
 
 4. Are there differences in activity patterns between weekdays and weekends?
 ============================================================================
